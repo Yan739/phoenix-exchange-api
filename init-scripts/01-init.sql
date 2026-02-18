@@ -1,0 +1,16 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "pg_trgm";
+
+CREATE SCHEMA IF NOT EXISTS public;
+
+SET search_path TO public;
+
+GRANT ALL PRIVILEGES ON SCHEMA public TO phoenix_user;
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO phoenix_user;
+GRANT ALL PRIVILEGES ON ALL SEQUENCES IN SCHEMA public TO phoenix_user;
+
+ALTER SYSTEM SET max_connections = 200;
+ALTER SYSTEM SET shared_buffers = '256MB';
+ALTER SYSTEM SET effective_cache_size = '1GB';
+ALTER SYSTEM SET work_mem = '16MB';
+

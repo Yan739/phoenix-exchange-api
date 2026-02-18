@@ -31,3 +31,23 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# Maven
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+dependency-reduced-pom.xml
+
+# IDE
+.DS_Store
+
+# Logs
+*.log
+
+# Environment
+.env.local
+.env.production
+
+# Docker
+postgres_data/
