@@ -1,4 +1,4 @@
-package com.yann.phoenix_exchange_api.domain.product;
+package com.yann.phoenix_exchange_api.entity.product;
 
 public enum Grade {
     A_PLUS,

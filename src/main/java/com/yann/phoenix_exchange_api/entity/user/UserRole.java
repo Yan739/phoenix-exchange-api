@@ -1,4 +1,4 @@
-package com.yann.phoenix_exchange_api.domain.user;
+package com.yann.phoenix_exchange_api.entity.user;
 
 public enum UserRole {
     ADMIN,
