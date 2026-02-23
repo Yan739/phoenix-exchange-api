@@ -2,6 +2,7 @@ package com.yann.phoenix_exchange_api.dto.product;
 
 import com.yann.phoenix_exchange_api.entity.product.Grade;
 import com.yann.phoenix_exchange_api.entity.product.ProductStatus;
+import jakarta.validation.constraints.*;
 import lombok.*;
 import java.math.BigDecimal;
 
@@ -9,9 +10,16 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductUpdateDTO {
+
+    @Size(max = 255)
     private String name;
+
+    @DecimalMin(value = "0.0")
     private BigDecimal sellPrice;
+
     private ProductStatus status;
+
     private Grade grade;
+
     private Long warehouseId;
 }

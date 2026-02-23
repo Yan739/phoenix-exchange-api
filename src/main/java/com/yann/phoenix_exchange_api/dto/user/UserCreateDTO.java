@@ -1,28 +1,37 @@
 package com.yann.phoenix_exchange_api.dto.user;
 
 import com.yann.phoenix_exchange_api.entity.user.UserRole;
+import jakarta.validation.constraints.*;
 import lombok.*;
-import java.time.LocalDateTime;
 
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
-    private Long id;
-    private String username;
-    private String email;
-    private String firstName;
-    private String lastName;
-    private String fullName;
-    private UserRole role;
-    private Boolean isActive;
-    private String phone;
-    private LocalDateTime createdAt;
-    private LocalDateTime lastLogin;
+public class UserCreateDTO {
 
-    // Stats (optionnel)
-    private Integer assignedTicketsCount;
-    private Integer completedInterventionsCount;
+    @NotBlank
+    @Size(min = 3, max = 100)
+    private String username;
+
+    @NotBlank
+    @Email
+    private String email;
+
+    @NotBlank
+    @Size(min = 6, max = 100)
+    private String password;
+
+    @NotBlank
+    @Size(max = 100)
+    private String firstName;
+
+    @NotBlank
+    @Size(max = 100)
+    private String lastName;
+
+    @NotNull
+    private UserRole role;
+
+    private String phone;
 }
 

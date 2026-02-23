@@ -38,4 +38,8 @@ public class ProductDTO {
     private BigDecimal margin;
     private BigDecimal marginPercentage;
     private Boolean availableForSale;
+
+    // Optional stats
+    private Integer daysInStock;
+    private Boolean hasActiveRepairTicket;
 }

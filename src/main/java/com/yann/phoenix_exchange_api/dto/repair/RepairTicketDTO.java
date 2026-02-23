@@ -17,21 +17,23 @@ public class RepairTicketDTO {
     private TicketStatus status;
     private Priority priority;
 
-    // Product info
+    // Product
     private Long productId;
     private String productName;
     private String productSerialNumber;
 
-    // Technician info
+    // Technician
     private Long assignedToId;
     private String assignedToName;
 
-    // Costs & duration
+    // Costs & Duration
     private BigDecimal estimatedCost;
     private BigDecimal actualCost;
     private Integer estimatedDurationHours;
     private Integer actualDurationHours;
+    private BigDecimal costVariance;
 
+    // Details
     private String diagnosis;
 
     // Timestamps
@@ -40,9 +42,11 @@ public class RepairTicketDTO {
 
     // Interventions
     private List<InterventionDTO> interventions;
+    private Integer interventionsCount;
 
     // Calculated
     private Boolean overdue;
     private Boolean requiresUrgentAttention;
+    private Integer durationDays;
 }
 

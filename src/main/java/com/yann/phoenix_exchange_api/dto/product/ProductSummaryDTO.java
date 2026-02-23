@@ -14,6 +14,7 @@ public class ProductSummaryDTO {
     private String serialNumber;
     private String name;
     private String brand;
+    private String category;
     private BigDecimal sellPrice;
     private ProductStatus status;
     private Grade grade;

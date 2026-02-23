@@ -13,7 +13,7 @@ public class ProductCreateDTO {
     @Size(max = 255)
     private String serialNumber;
 
-    @NotBlank(message = "Name is required")
+    @NotBlank(message = "Product name is required")
     @Size(max = 255)
     private String name;
 
@@ -26,12 +26,13 @@ public class ProductCreateDTO {
     @DecimalMin(value = "0.0", message = "Purchase price must be positive")
     private BigDecimal purchasePrice;
 
-    @Min(value = 1900)
-    @Max(value = 2100)
+    @Min(value = 1900, message = "Year must be after 1900")
+    @Max(value = 2100, message = "Year must be before 2100")
     private Integer year;
 
     private Long supplierId;
     private Long purchaseOrderId;
     private Long warehouseId;
 }
+
 

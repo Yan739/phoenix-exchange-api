@@ -1,27 +1,18 @@
 package com.yann.phoenix_exchange_api.dto.repair;
 
 import com.yann.phoenix_exchange_api.entity.repair.Priority;
-import jakarta.validation.constraints.*;
+import com.yann.phoenix_exchange_api.entity.repair.TicketStatus;
 import lombok.*;
 import java.math.BigDecimal;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RepairTicketCreateDTO {
-
-    @NotNull(message = "Product ID is required")
-    private Long productId;
-
-    @NotNull(message = "Priority is required")
+public class RepairTicketUpdateDTO {
+    private TicketStatus status;
     private Priority priority;
-
-    @DecimalMin("0.0")
+    private Long assignedToId;
     private BigDecimal estimatedCost;
-
-    @Min(1)
     private Integer estimatedDurationHours;
-
-    @Size(max = 5000)
     private String diagnosis;
 }

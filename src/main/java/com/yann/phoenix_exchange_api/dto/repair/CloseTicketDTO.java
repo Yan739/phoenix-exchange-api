@@ -12,5 +12,6 @@ public class CloseTicketDTO {
     @NotNull(message = "Grade is required")
     private Grade grade;
 
+    @Size(max = 1000)
     private String notes;
 }

@@ -9,23 +9,26 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class InterventionCreateDTO {
 
-    @NotNull
+    @NotNull(message = "Ticket ID is required")
     private Long ticketId;
 
-    @NotNull
+    @NotNull(message = "Technician ID is required")
     private Long technicianId;
 
-    @NotBlank
+    @NotBlank(message = "Intervention type is required")
+    @Size(max = 100)
     private String type;
 
-    @NotBlank
+    @NotBlank(message = "Description is required")
+    @Size(max = 5000)
     private String description;
 
+    @Size(max = 1000)
     private String partsUsed;
 
-    @Min(0)
+    @Min(value = 0, message = "Duration must be positive")
     private Integer durationMinutes;
 
-    @DecimalMin("0.0")
+    @DecimalMin(value = "0.0", message = "Cost must be positive")
     private BigDecimal cost;
 }
