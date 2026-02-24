@@ -8,5 +8,6 @@ import lombok.*;
 @AllArgsConstructor
 public class MessageResponseDTO {
     private String message;
+    private boolean success;
     private Object data;
 }
