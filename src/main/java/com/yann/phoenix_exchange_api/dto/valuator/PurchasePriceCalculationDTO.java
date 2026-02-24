@@ -13,8 +13,12 @@ public class PurchasePriceCalculationDTO {
     private BigDecimal adjustedPrice;
     private BigDecimal refurbishingCost;
     private BigDecimal targetMarginPct;
+    private BigDecimal targetMarginAmount;
     private BigDecimal recommendedPurchasePrice;
+    private BigDecimal projectedSellPrice;
     private BigDecimal projectedMargin;
     private BigDecimal projectedMarginPct;
     private String decision;
+    private  String reasoning;
+    private boolean approved;
 }
