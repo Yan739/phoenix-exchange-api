@@ -1,4 +1,4 @@
-package com.yann.phoenix_exchange_api.config;
+package com.yann.phoenix_exchange_api.security;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;

@@ -1,4 +1,4 @@
-package com.yann.phoenix_exchange_api.config;
+package com.yann.phoenix_exchange_api.security;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

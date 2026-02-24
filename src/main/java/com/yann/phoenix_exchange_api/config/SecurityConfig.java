@@ -1,5 +1,6 @@
 package com.yann.phoenix_exchange_api.config;
 
+import com.yann.phoenix_exchange_api.security.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

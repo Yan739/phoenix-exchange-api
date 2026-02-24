@@ -1,4 +1,4 @@
-package com.yann.phoenix_exchange_api.service;
+package com.yann.phoenix_exchange_api.security;
 
 import com.yann.phoenix_exchange_api.entity.user.User;
 import com.yann.phoenix_exchange_api.repository.UserRepository;
