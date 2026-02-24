@@ -14,6 +14,10 @@ public class EstimationResponseDTO {
     private BigDecimal estimatedPrice;
     private String aiDescription;
     private Integer confidence;
+    private String itemName;
+    private String brand;
+    private String category;
+    private Integer conditionRating;
     private Grade suggestedGrade;
     private Boolean isFallback;
     private LocalDateTime createdAt;

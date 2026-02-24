@@ -64,13 +64,13 @@ public class DashboardStatsDTO {
     // === SUPPLIERS ===
     private Integer totalSuppliers;
     private Integer activeSuppliers;
-    private Integer reliableSuppliers; // rating >= 4.0
+    private Integer reliableSuppliers;
 
     // === INVENTORY ===
     private Integer totalWarehouseCapacity;
     private Integer currentTotalStock;
     private Double averageOccupancyRate;
-    private Integer warehousesNearCapacity; // > 80%
+    private Integer warehousesNearCapacity;
 
     // === SMART VALUATOR ===
     private Integer totalEstimations;
@@ -80,5 +80,5 @@ public class DashboardStatsDTO {
 
     // === DATES ===
     private LocalDateTime lastUpdated;
-    private String period; // "TODAY", "THIS_MONTH", "THIS_YEAR"
+    private String period;
 }

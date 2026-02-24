@@ -1,4 +1,4 @@
-package com.yann.phoenix_exchange_api.dto.sales;
+package com.yann.phoenix_exchange_api.dto.sale;
 
 import com.yann.phoenix_exchange_api.entity.sale.PaymentMethod;
 import com.yann.phoenix_exchange_api.entity.sale.PaymentStatus;

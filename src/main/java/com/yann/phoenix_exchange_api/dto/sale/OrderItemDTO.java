@@ -1,4 +1,4 @@
-package com.yann.phoenix_exchange_api.dto.sales;
+package com.yann.phoenix_exchange_api.dto.sale;
 
 import lombok.*;
 import java.math.BigDecimal;
