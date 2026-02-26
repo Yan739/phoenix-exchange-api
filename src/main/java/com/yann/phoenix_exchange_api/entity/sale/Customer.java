@@ -78,7 +78,7 @@ public class Customer {
         updateSegment();
     }
 
-    private void updateSegment() {
+    public void updateSegment() {
         if (totalSpent.compareTo(new BigDecimal("5000")) >= 0) {
             this.segment = CustomerSegment.VIP;
         } else if (totalSpent.compareTo(new BigDecimal("500")) >= 0) {

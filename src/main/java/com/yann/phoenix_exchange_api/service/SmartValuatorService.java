@@ -26,11 +26,11 @@ public class SmartValuatorService {
     private final PricingRuleRepository pricingRuleRepository;
     private final SmartValuatorEstimationMapper estimationMapper;
 
-    @Value("${huggingface.api.url}")
+    @Value("https://router.huggingface.co/v1/chat/completions")
     private String huggingFaceApiUrl;
 
-    @Value("${huggingface.api.key}")
-    private String huggingFaceApiKey;
+    @Value("${HF_API_KEY}")
+    private String hfApiKey;
 
     public EstimationResponseDTO estimate(EstimationRequestDTO request) {
         try {

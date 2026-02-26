@@ -5,12 +5,17 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.ProviderManager;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -27,7 +32,6 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf(csrf -> csrf.disable())
-                .cors(cors -> cors.configure(http))
                 .authorizeHttpRequests(auth -> auth
                         // Public endpoints
                         .requestMatchers("/api/auth/**").permitAll()
@@ -36,10 +40,10 @@ public class SecurityConfig {
                         // Swagger/OpenAPI
                         .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
 
-                        // Actuator (if enabled)
+                        // Actuator
                         .requestMatchers("/actuator/**").permitAll()
 
-                        // Products endpoints
+                        // Products
                         .requestMatchers(HttpMethod.GET, "/api/products/**")
                         .hasAnyRole("ADMIN", "MANAGER", "COMMERCIAL", "TECHNICIAN")
                         .requestMatchers(HttpMethod.POST, "/api/products/**")
@@ -49,66 +53,65 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/api/products/**")
                         .hasRole("ADMIN")
 
-                        // Repair Tickets endpoints
+                        // Repair Tickets
                         .requestMatchers("/api/repair-tickets/**")
                         .hasAnyRole("ADMIN", "MANAGER", "TECHNICIAN")
 
-                        // Smart Valuator endpoints
+                        // Smart Valuator
                         .requestMatchers("/api/valuator/**")
                         .hasAnyRole("ADMIN", "MANAGER", "COMMERCIAL", "TECHNICIAN")
 
-                        // Sales endpoints
+                        // Sales
                         .requestMatchers("/api/sales-orders/**")
                         .hasAnyRole("ADMIN", "MANAGER", "COMMERCIAL")
 
-                        // Purchase endpoints
+                        // Purchases
                         .requestMatchers("/api/purchase-orders/**")
                         .hasAnyRole("ADMIN", "MANAGER", "COMMERCIAL")
 
-                        // Suppliers endpoints
+                        // Suppliers
                         .requestMatchers("/api/suppliers/**")
                         .hasAnyRole("ADMIN", "MANAGER", "COMMERCIAL")
 
-                        // Customers endpoints
+                        // Customers
                         .requestMatchers("/api/customers/**")
                         .hasAnyRole("ADMIN", "MANAGER", "COMMERCIAL")
 
-                        // Warehouses endpoints
+                        // Warehouses
                         .requestMatchers("/api/warehouses/**")
                         .hasAnyRole("ADMIN", "MANAGER")
 
-                        // Dashboard endpoints
+                        // Dashboard
                         .requestMatchers("/api/dashboard/**")
                         .hasAnyRole("ADMIN", "MANAGER")
 
-                        // Users management
+                        // Users
                         .requestMatchers("/api/users/**")
                         .hasRole("ADMIN")
 
-                        // All other requests must be authenticated
+                        // All other requests
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(session -> session
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 )
-                .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-        authProvider.setUserDetailsService(userDetailsService);
+    public DaoAuthenticationProvider authenticationProvider() {
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider(userDetailsService);
+
         authProvider.setPasswordEncoder(passwordEncoder());
+
         return authProvider;
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration config)
-            throws Exception {
-        return config.getAuthenticationManager();
+    public AuthenticationManager authenticationManager() {
+        return new ProviderManager(authenticationProvider());
     }
 
     @Bean

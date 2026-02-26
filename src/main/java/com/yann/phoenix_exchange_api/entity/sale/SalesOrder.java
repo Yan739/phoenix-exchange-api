@@ -1,6 +1,7 @@
 package com.yann.phoenix_exchange_api.entity.sale;
 
 import com.yann.phoenix_exchange_api.entity.product.Product;
+import com.yann.phoenix_exchange_api.entity.product.ProductStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import java.math.BigDecimal;
